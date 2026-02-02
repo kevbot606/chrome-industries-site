@@ -81,6 +81,7 @@ const projects = [
 function Work() {
   const [activeProject, setActiveProject] = useState(null)
   const [hoveredProject, setHoveredProject] = useState(null)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
   const sectionRef = useRef(null)
 
   useEffect(() => {
@@ -101,6 +102,24 @@ function Work() {
     return () => observer.disconnect()
   }, [])
 
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null || !activeProject) return
+
+      if (e.key === 'Escape') {
+        closeLightbox()
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(-1)
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(1)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxIndex, activeProject])
+
   const openModal = (project) => {
     setActiveProject(project)
     document.body.style.overflow = 'hidden'
@@ -108,7 +127,22 @@ function Work() {
 
   const closeModal = () => {
     setActiveProject(null)
+    setLightboxIndex(null)
     document.body.style.overflow = 'unset'
+  }
+
+  const openLightbox = (index) => {
+    setLightboxIndex(index)
+  }
+
+  const closeLightbox = () => {
+    setLightboxIndex(null)
+  }
+
+  const navigateLightbox = (direction) => {
+    if (!activeProject) return
+    const newIndex = (lightboxIndex + direction + activeProject.images.length) % activeProject.images.length
+    setLightboxIndex(newIndex)
   }
 
   return (
@@ -200,15 +234,26 @@ function Work() {
               </div>
 
               <div className="modal-gallery">
-                {activeProject.images.map((image, index) => (
-                  <div key={index} className="gallery-item">
-                    <img
-                      src={image}
-                      alt={`${activeProject.title} - Image ${index + 1}`}
-                      className="gallery-image"
-                    />
-                  </div>
-                ))}
+                {activeProject.images.map((image, index) => {
+                  // Determine if this image needs top alignment
+                  const needsTopAlign =
+                    (activeProject.id === 1 && index === 0) ||
+                    (activeProject.id === 2 && index === 2)
+
+                  return (
+                    <div
+                      key={index}
+                      className="gallery-item gallery-item-clickable"
+                      onClick={() => openLightbox(index)}
+                    >
+                      <img
+                        src={image}
+                        alt={`${activeProject.title} - Image ${index + 1}`}
+                        className={`gallery-image ${needsTopAlign ? 'gallery-image-top' : ''}`}
+                      />
+                    </div>
+                  )
+                })}
               </div>
 
               <div className="modal-body">
@@ -259,6 +304,49 @@ function Work() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && activeProject && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <button className="lightbox-close" onClick={closeLightbox} aria-label="Close lightbox">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+
+          <button
+            className="lightbox-nav lightbox-prev"
+            onClick={(e) => { e.stopPropagation(); navigateLightbox(-1) }}
+            aria-label="Previous image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={activeProject.images[lightboxIndex]}
+              alt={`${activeProject.title} - Image ${lightboxIndex + 1}`}
+              className="lightbox-image"
+            />
+          </div>
+
+          <button
+            className="lightbox-nav lightbox-next"
+            onClick={(e) => { e.stopPropagation(); navigateLightbox(1) }}
+            aria-label="Next image"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+
+          <div className="lightbox-counter">
+            {lightboxIndex + 1} / {activeProject.images.length}
           </div>
         </div>
       )}
