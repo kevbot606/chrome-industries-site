@@ -214,11 +214,13 @@
 .hero-content {
   max-width: 1200px;
   width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .hero-content-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: var(--spacing-3xl);
   align-items: center;
 }
@@ -230,12 +232,12 @@
 .hero-portrait {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .portrait-placeholder {
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   aspect-ratio: 3/4;
   background: var(--color-bg-tertiary);
   border: 2px dashed var(--color-border);
@@ -262,6 +264,7 @@
 
   .hero-portrait {
     order: 0;
+    justify-content: center;
   }
 
   .portrait-placeholder {
