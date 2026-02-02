@@ -36,34 +36,46 @@ function Hero() {
         <div className="hero-noise"></div>
       </div>
 
-      <div className="hero-content">
-        <div className="hero-badge">
-          <span className="badge-dot"></span>
-          Available for new opportunities
+      <div className="hero-content hero-content-split">
+        <div className="hero-text">
+          <div className="hero-badge">
+            <span className="badge-dot"></span>
+            Available for new opportunities
+          </div>
+
+          <h1 className="hero-title">
+            <span className="title-line">Kevin Coalwell</span>
+            <span className="title-accent">Designer</span>
+          </h1>
+
+          <p className="hero-description">
+            Versatile designer specializing in translating complex technical concepts
+            into compelling visual experiences. I craft bold, on-brand content that
+            drives engagement across marketing campaigns, product launches, and
+            e-commerce channels.
+          </p>
+
+          <div className="hero-cta">
+            <button className="btn btn-primary" onClick={scrollToWork}>
+              View My Work
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <a href="#contact" className="btn btn-secondary">
+              Let's Talk
+            </a>
+          </div>
         </div>
 
-        <h1 className="hero-title">
-          <span className="title-line">Kevin Coalwell</span>
-          <span className="title-accent">Designer</span>
-        </h1>
-
-        <p className="hero-description">
-          Versatile designer specializing in translating complex technical concepts
-          into compelling visual experiences. I craft bold, on-brand content that
-          drives engagement across marketing campaigns, product launches, and
-          e-commerce channels.
-        </p>
-
-        <div className="hero-cta">
-          <button className="btn btn-primary" onClick={scrollToWork}>
-            View My Work
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+        <div className="hero-portrait">
+          <div className="portrait-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
             </svg>
-          </button>
-          <a href="#contact" className="btn btn-secondary">
-            Let's Talk
-          </a>
+            <span>Portrait</span>
+          </div>
         </div>
       </div>
 

@@ -205,6 +205,39 @@ function Work() {
                 <p className="modal-subtitle">{activeProject.subtitle}</p>
               </div>
 
+              <div className="modal-gallery">
+                <div className="gallery-item">
+                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Image 1</span>
+                  </div>
+                </div>
+                <div className="gallery-item">
+                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Image 2</span>
+                  </div>
+                </div>
+                <div className="gallery-item">
+                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <path d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span>Image 3</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="modal-body">
                 <div className="modal-section">
                   <h3>The Challenge</h3>

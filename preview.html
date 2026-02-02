@@ -95,8 +95,46 @@
     }
     .hero-content {
       position: relative;
-      max-width: 900px;
-      text-align: center;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .hero-content-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text {
+      text-align: left;
+    }
+    .hero-portrait {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portrait-placeholder {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 3/4;
+      background: var(--color-bg-tertiary);
+      border: 2px dashed var(--color-border);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--color-text-tertiary);
+      font-size: 0.875rem;
+    }
+    @media (max-width: 900px) {
+      .hero-content-split {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text { text-align: center; order: 1; }
+      .hero-portrait { order: 0; }
+      .portrait-placeholder { max-width: 280px; aspect-ratio: 1; }
     }
     .hero-badge {
       display: inline-flex;
@@ -139,14 +177,23 @@
       font-size: 1.125rem;
       color: var(--color-text-secondary);
       max-width: 700px;
-      margin: 0 auto 2rem;
+      margin: 0 0 2rem;
       line-height: 1.7;
+    }
+    .hero-text .hero-description {
+      margin: 0 0 2rem;
+    }
+    @media (max-width: 900px) {
+      .hero-text .hero-description { margin: 0 auto 2rem; }
     }
     .hero-cta {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 1rem;
       flex-wrap: wrap;
+    }
+    @media (max-width: 900px) {
+      .hero-cta { justify-content: center; }
     }
     .btn {
       display: inline-flex;
@@ -395,7 +442,23 @@
     @media (max-width: 900px) {
       .contact-content { grid-template-columns: 1fr; }
     }
-    .contact-info .section-header { text-align: left; margin: 0 0 2rem; }
+    .contact-info .section-header { text-align: left; margin: 0; }
+    .contact-content-inline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-content-inline .contact-methods {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .contact-content-inline { grid-template-columns: 1fr; }
+      .contact-content-inline .contact-info .section-header { text-align: center; margin-bottom: 2rem; }
+      .contact-content-inline .contact-methods { grid-template-columns: 1fr; }
+    }
     .contact-methods {
       display: flex;
       flex-direction: column;
@@ -534,24 +597,35 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Available for new opportunities
+    <div class="hero-content hero-content-split">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for new opportunities
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">Kevin Coalwell</span>
+          <span class="title-accent">Designer</span>
+        </h1>
+        <p class="hero-description">
+          Versatile designer specializing in translating complex technical concepts
+          into compelling visual experiences. I craft bold, on-brand content that
+          drives engagement across marketing campaigns, product launches, and
+          e-commerce channels.
+        </p>
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+        </div>
       </div>
-      <h1 class="hero-title">
-        <span class="title-line">Kevin Coalwell</span>
-        <span class="title-accent">Designer</span>
-      </h1>
-      <p class="hero-description">
-        Versatile designer specializing in translating complex technical concepts
-        into compelling visual experiences. I craft bold, on-brand content that
-        drives engagement across marketing campaigns, product launches, and
-        e-commerce channels.
-      </p>
-      <div class="hero-cta">
-        <a href="#work" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+      <div class="hero-portrait">
+        <div class="portrait-placeholder">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+          </svg>
+          <span>Portrait</span>
+        </div>
       </div>
     </div>
   </section>
@@ -767,7 +841,7 @@
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <div class="contact-container">
-      <div class="contact-content">
+      <div class="contact-content contact-content-inline">
         <div class="contact-info">
           <div class="section-header">
             <span class="section-label">Get in Touch</span>
@@ -777,79 +851,56 @@
               about new opportunities and creative projects.
             </p>
           </div>
-          <div class="contact-methods">
-            <a href="mailto:hello@kevincoalwell.com" class="contact-method">
-              <div class="method-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div>
-                <span class="method-label">Email</span>
-                <span class="method-value">hello@kevincoalwell.com</span>
-              </div>
-            </a>
-            <a href="tel:503-862-9695" class="contact-method">
-              <div class="method-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <div>
-                <span class="method-label">Phone</span>
-                <span class="method-value">503.862.9695</span>
-              </div>
-            </a>
-            <a href="https://www.linkedin.com/in/kevin-coalwell" target="_blank" class="contact-method">
-              <div class="method-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
-                </svg>
-              </div>
-              <div>
-                <span class="method-label">LinkedIn</span>
-                <span class="method-value">kevin-coalwell</span>
-              </div>
-            </a>
-            <div class="contact-method" style="cursor: default;">
-              <div class="method-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div>
-                <span class="method-label">Location</span>
-                <span class="method-value">Portland, Oregon</span>
-              </div>
+        </div>
+        <div class="contact-methods">
+          <a href="mailto:hello@kevincoalwell.com" class="contact-method">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <span class="method-label">Email</span>
+              <span class="method-value">hello@kevincoalwell.com</span>
+            </div>
+          </a>
+          <a href="tel:503-862-9695" class="contact-method">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="method-label">Phone</span>
+              <span class="method-value">503.862.9695</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kevin-coalwell" target="_blank" class="contact-method">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="method-label">LinkedIn</span>
+              <span class="method-value">kevin-coalwell</span>
+            </div>
+          </a>
+          <div class="contact-method" style="cursor: default;">
+            <div class="method-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <span class="method-label">Location</span>
+              <span class="method-value">Portland, Oregon</span>
             </div>
           </div>
-        </div>
-        <div class="contact-form-wrapper">
-          <form class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Your name">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="your@email.com">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" placeholder="What's this about?">
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" rows="5" placeholder="Tell me about your project or opportunity..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
         </div>
       </div>
     </div>
