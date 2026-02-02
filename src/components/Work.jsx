@@ -1,5 +1,23 @@
 import { useState, useEffect, useRef } from 'react'
 
+// Case Study 1 images
+import cs1Thumbnail from '../assets/images/case-study-1-thumbnail.png'
+import cs1Image1 from '../assets/images/case-study-1-image-1.png'
+import cs1Image2 from '../assets/images/case-study-1-image-2.png'
+import cs1Image3 from '../assets/images/case-study-1-image-3.png'
+
+// Case Study 2 images
+import cs2Thumbnail from '../assets/images/case-study-2-thumbnail.png'
+import cs2Image1 from '../assets/images/case-study-2-image-1.png'
+import cs2Image2 from '../assets/images/case-study-2-image-2.png'
+import cs2Image3 from '../assets/images/case-study-2-image-3.png'
+
+// Case Study 3 images
+import cs3Thumbnail from '../assets/images/case-study-3-thumbnail.png'
+import cs3Image1 from '../assets/images/case-study-3-image_1.png'
+import cs3Image2 from '../assets/images/case-study-3-image-2.png'
+import cs3Image3 from '../assets/images/case-study-3-image-3.png'
+
 const projects = [
   {
     id: 1,
@@ -19,12 +37,8 @@ const projects = [
     timeline: "3 months",
     role: "Lead Designer",
     color: "#FF6B35",
-    thumbnail: "/assets/case-study-1-thumbnail.png",
-    images: [
-      "/assets/case-study-1-image-1.png",
-      "/assets/case-study-1-image-2.png",
-      "/assets/case-study-1-image-3.png"
-    ]
+    thumbnail: cs1Thumbnail,
+    images: [cs1Image1, cs1Image2, cs1Image3]
   },
   {
     id: 2,
@@ -44,12 +58,8 @@ const projects = [
     timeline: "3 months",
     role: "Visual Design Lead",
     color: "#FFB800",
-    thumbnail: "/assets/case-study-2-thumbnail.png",
-    images: [
-      "/assets/case-study-2-image-1.png",
-      "/assets/case-study-2-image-2.png",
-      "/assets/case-study-2-image-3.png"
-    ]
+    thumbnail: cs2Thumbnail,
+    images: [cs2Image1, cs2Image2, cs2Image3]
   },
   {
     id: 3,
@@ -69,12 +79,8 @@ const projects = [
     timeline: "3 months",
     role: "Visual Designer & Project Lead",
     color: "#FF8C42",
-    thumbnail: "/assets/case-study-3-thumbnail.png",
-    images: [
-      "/assets/case-study-3-image_1.png",
-      "/assets/case-study-3-image-2.png",
-      "/assets/case-study-3-image-3.png"
-    ]
+    thumbnail: cs3Thumbnail,
+    images: [cs3Image1, cs3Image2, cs3Image3]
   }
 ]
 
