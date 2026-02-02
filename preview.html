@@ -114,6 +114,15 @@
       align-items: center;
       justify-content: flex-end;
     }
+    .portrait-image {
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+      filter: grayscale(100%);
+    }
     .portrait-placeholder {
       width: 100%;
       max-width: 350px;
@@ -137,6 +146,7 @@
       .hero-text { text-align: center; order: 1; }
       .hero-portrait { order: 0; justify-content: center; }
       .portrait-placeholder { max-width: 280px; aspect-ratio: 1; }
+      .portrait-image { max-width: 280px; aspect-ratio: 1; }
     }
     .hero-badge {
       display: inline-flex;
@@ -280,6 +290,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+    .project-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.25s;
+    }
+    .project-card:hover .project-thumbnail {
+      transform: scale(1.05);
     }
     .project-content { padding: 1.5rem; }
     .project-category {
@@ -621,13 +642,7 @@
         </div>
       </div>
       <div class="hero-portrait">
-        <div class="portrait-placeholder">
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3">
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
-          </svg>
-          <span>Portrait</span>
-        </div>
+        <img src="assets/hero-image-1.png" alt="Kevin Coalwell" class="portrait-image">
       </div>
     </div>
   </section>
@@ -646,12 +661,8 @@
       <div class="projects-grid">
         <!-- Project 1 -->
         <article class="project-card" style="--accent: #FF6B35;">
-          <div class="project-image" style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 107, 53, 0.4));">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18"/>
-              <path d="M9 21V9"/>
-            </svg>
+          <div class="project-image">
+            <img src="assets/case-study-1-thumbnail.png" alt="Tradeshow Visual Identity" class="project-thumbnail">
           </div>
           <div class="project-content">
             <span class="project-category">Brand Design / Marketing Collateral</span>
@@ -672,12 +683,8 @@
 
         <!-- Project 2 -->
         <article class="project-card" style="--accent: #FFB800;">
-          <div class="project-image" style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.2), rgba(255, 184, 0, 0.4));">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="1.5">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <path d="M8 21h8"/>
-              <path d="M12 17v4"/>
-            </svg>
+          <div class="project-image">
+            <img src="assets/case-study-2-thumbnail.png" alt="Corporate Website Redesign" class="project-thumbnail">
           </div>
           <div class="project-content">
             <span class="project-category" style="color: #FFB800;">UI/UX Design / Visual Design</span>
@@ -697,13 +704,8 @@
 
         <!-- Project 3 -->
         <article class="project-card" style="--accent: #FF8C42;">
-          <div class="project-image" style="background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(255, 140, 66, 0.4));">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M12 12v8"/>
-              <path d="M8 16h8"/>
-              <path d="M9 20h6"/>
-            </svg>
+          <div class="project-image">
+            <img src="assets/case-study-3-thumbnail.png" alt="R&D Robot Livery System" class="project-thumbnail">
           </div>
           <div class="project-content">
             <span class="project-category" style="color: #FF8C42;">Product Design / Brand Strategy</span>

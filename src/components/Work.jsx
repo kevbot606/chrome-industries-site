@@ -19,7 +19,12 @@ const projects = [
     timeline: "3 months",
     role: "Lead Designer",
     color: "#FF6B35",
-    image: "tradeshow"
+    thumbnail: "/assets/case-study-1-thumbnail.png",
+    images: [
+      "/assets/case-study-1-image-1.png",
+      "/assets/case-study-1-image-2.png",
+      "/assets/case-study-1-image-3.png"
+    ]
   },
   {
     id: 2,
@@ -39,7 +44,12 @@ const projects = [
     timeline: "3 months",
     role: "Visual Design Lead",
     color: "#FFB800",
-    image: "website"
+    thumbnail: "/assets/case-study-2-thumbnail.png",
+    images: [
+      "/assets/case-study-2-image-1.png",
+      "/assets/case-study-2-image-2.png",
+      "/assets/case-study-2-image-3.png"
+    ]
   },
   {
     id: 3,
@@ -59,7 +69,12 @@ const projects = [
     timeline: "3 months",
     role: "Visual Designer & Project Lead",
     color: "#FF8C42",
-    image: "livery"
+    thumbnail: "/assets/case-study-3-thumbnail.png",
+    images: [
+      "/assets/case-study-3-image_1.png",
+      "/assets/case-study-3-image-2.png",
+      "/assets/case-study-3-image-3.png"
+    ]
   }
 ]
 
@@ -121,32 +136,11 @@ function Work() {
               onClick={() => openModal(project)}
             >
               <div className="project-image">
-                <div className="project-image-placeholder" style={{ background: `linear-gradient(135deg, ${project.color}22, ${project.color}44)` }}>
-                  <div className="project-icon">
-                    {project.image === 'tradeshow' && (
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={project.color} strokeWidth="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <path d="M3 9h18"/>
-                        <path d="M9 21V9"/>
-                      </svg>
-                    )}
-                    {project.image === 'website' && (
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={project.color} strokeWidth="1.5">
-                        <rect x="2" y="3" width="20" height="14" rx="2"/>
-                        <path d="M8 21h8"/>
-                        <path d="M12 17v4"/>
-                      </svg>
-                    )}
-                    {project.image === 'livery' && (
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={project.color} strokeWidth="1.5">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M12 12v8"/>
-                        <path d="M8 16h8"/>
-                        <path d="M9 20h6"/>
-                      </svg>
-                    )}
-                  </div>
-                </div>
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="project-thumbnail"
+                />
                 <div className="project-overlay">
                   <span className="view-project">
                     View Case Study
@@ -206,36 +200,15 @@ function Work() {
               </div>
 
               <div className="modal-gallery">
-                <div className="gallery-item">
-                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <path d="M21 15l-5-5L5 21"/>
-                    </svg>
-                    <span>Image 1</span>
+                {activeProject.images.map((image, index) => (
+                  <div key={index} className="gallery-item">
+                    <img
+                      src={image}
+                      alt={`${activeProject.title} - Image ${index + 1}`}
+                      className="gallery-image"
+                    />
                   </div>
-                </div>
-                <div className="gallery-item">
-                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <path d="M21 15l-5-5L5 21"/>
-                    </svg>
-                    <span>Image 2</span>
-                  </div>
-                </div>
-                <div className="gallery-item">
-                  <div className="gallery-placeholder" style={{ background: `linear-gradient(135deg, ${activeProject.color}15, ${activeProject.color}30)` }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={activeProject.color} strokeWidth="1.5" opacity="0.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <path d="M21 15l-5-5L5 21"/>
-                    </svg>
-                    <span>Image 3</span>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className="modal-body">
