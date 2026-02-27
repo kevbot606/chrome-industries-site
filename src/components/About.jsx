@@ -118,7 +118,7 @@ function About() {
                   </svg>
                 </span>
                 <div>
-                  <h4>Microcredential in Computer Science</h4>
+                  <h4>Fundamentals of Computer Science Microcredential</h4>
                   <p>Oregon State University</p>
                 </div>
               </div>
@@ -130,7 +130,7 @@ function About() {
                   </svg>
                 </span>
                 <div>
-                  <h4>Portland, Oregon Based</h4>
+                  <h4>Salem, Oregon Based</h4>
                   <p>Available for on-site opportunities</p>
                 </div>
               </div>

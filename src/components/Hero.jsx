@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import heroImage from '../assets/images/hero-image-1.png'
 
 function Hero() {
   const heroRef = useRef(null)
@@ -70,11 +69,13 @@ function Hero() {
         </div>
 
         <div className="hero-portrait">
-          <img
-            src={heroImage}
-            alt="Kevin Coalwell"
-            className="portrait-image"
-          />
+          <div className="portrait-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+            <span>Portrait</span>
+          </div>
         </div>
       </div>
 

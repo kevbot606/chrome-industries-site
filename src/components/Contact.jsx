@@ -88,7 +88,7 @@ function Contact() {
               </div>
               <div className="method-details">
                 <span className="method-label">Location</span>
-                <span className="method-value">Portland, Oregon</span>
+                <span className="method-value">Salem, Oregon</span>
               </div>
             </div>
           </div>
